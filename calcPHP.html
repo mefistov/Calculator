@@ -1,0 +1,59 @@
+
+<html>
+<head>
+	<title>Calculator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="jquery-1.4.2.js"></script>
+  	<script src="json2.js"></script>
+  	<script type="text/javascript">
+		function CalcularTotal()
+		{
+			var par1 = $("#par1").val();
+			var par2 = $("#par2").val();
+			var op = $("#op").val();
+ 
+			/*Request the result with AJAX by POST method*/
+			/*The parameters are: par1, par2 and op.*/
+			$.post("localhost/calcnew.php", {par1: par1, par2: par2, op: op}, function(result){
+				$("#res").val(result);
+			}, "json"); /*This parameter ("json") indicates that the response from the server is in JSON*/
+		}
+  	</script>
+</head>
+<body>
+  <h3 align="center">CALCULATOR</h3>
+  <form action="localhost/calcnew.php" method="POST">
+    <table border="1" align="center" width="400px" cellpadding="4">
+    <tr>
+		<td><b>Param 1:</b></td>
+		<td>
+			<input type="text" name="par1" id="par1" size="10">
+		</td>
+    </tr>
+    <tr>
+		<td><b>Param 2:</b></td>
+		<td>
+			<input type="text" name="par2" id="par2" size="10">
+		</td>
+    </tr>
+    <tr>
+		<td><b>Operator:</b></td>
+		<td>
+			<input type="text" name="op" id="op" size="5">
+		</td>
+    </tr>
+    <tr>
+		<td colspan="2" align="center">
+		  <input type="button" name="enviar" value="Result" onclick="CalcularTotal();">
+		</td>
+    </tr>
+    <tr>
+		<td colspan="2" align="center">
+		  <input type="text" name="res" id="res" size="15">
+		</td>
+    </tr>
+    </table>
+ 
+  </form>
+</body>
+</html>

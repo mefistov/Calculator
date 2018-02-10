@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calc</title>
+</head>
+<body>
+	Аргумент 1
+	<input type="text" id="a1" value=""/> <p>
+	Знак      
+	<input type="text" id="op1" value=""/> <p>
+	Аргумент 2
+	<input type="text" id="b1" value=""/> <p>
+	Результат 
+	<input type="text" id="res" value=""/> <p>
+	<input type="button" id="btn" value="Click" onclick="showHint()"/>
+	<script>
+	
+			
+			
+			function showHint() {
+				a = a1.value;
+				b = b1.value;
+				op = op1.value;
+				xmlhttp.onreadystatechange = callback();
+				xmlhttp.open("GET", "calc.php?a=" + a + "&b=" + b + "&op=" + op, true);
+				xmlhttp.send();
+   
+			}
+
+			function callback () { 
+				if (xmlhttp.readyState != 4) return;
+
+				   if (xmlhttp.status != 200) {
+					rez.value = xmlhttp.responseText;
+				   } else {
+					rez.value = xmlhttp.responseText;
+				   }
+				  }
+	</script>
+</body>
